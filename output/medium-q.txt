@@ -1,0 +1,74 @@
+whisper_init_from_file_with_params_no_state: loading model from '/home/flynn/Work/whisper.cpp/models/ggml-medium-q.bin'
+whisper_model_load: loading model
+whisper_model_load: n_vocab       = 51865
+whisper_model_load: n_audio_ctx   = 1500
+whisper_model_load: n_audio_state = 1024
+whisper_model_load: n_audio_head  = 16
+whisper_model_load: n_audio_layer = 24
+whisper_model_load: n_text_ctx    = 448
+whisper_model_load: n_text_state  = 1024
+whisper_model_load: n_text_head   = 16
+whisper_model_load: n_text_layer  = 24
+whisper_model_load: n_mels        = 80
+whisper_model_load: ftype         = 8
+whisper_model_load: qntvr         = 2
+whisper_model_load: type          = 4 (medium)
+whisper_model_load: adding 1608 extra tokens
+whisper_model_load: n_langs       = 99
+whisper_model_load:      CPU total size =   538.59 MB
+whisper_model_load: model size    =  538.59 MB
+whisper_init_state: kv self size  =  132.12 MB
+whisper_init_state: kv cross size =  147.46 MB
+whisper_init_state: compute buffer (conv)   =   28.68 MB
+whisper_init_state: compute buffer (encode) =  594.22 MB
+whisper_init_state: compute buffer (cross)  =    7.85 MB
+whisper_init_state: compute buffer (decode) =  138.24 MB
+
+system_info: n_threads = 4 / 16 | AVX = 1 | AVX2 = 1 | AVX512 = 0 | FMA = 1 | NEON = 0 | ARM_FMA = 0 | METAL = 0 | F16C = 1 | FP16_VA = 0 | WASM_SIMD = 0 | BLAS = 0 | SSE3 = 1 | SSSE3 = 1 | VSX = 0 | CUDA = 0 | COREML = 0 | OPENVINO = 0
+
+main: processing 'samples/gb0.wav' (2037686 samples, 127.4 sec), 4 threads, 1 processors, 5 beams + best of 5, lang = en, task = transcribe, timestamps = 1 ...
+
+
+[00:00:00.000 --> 00:00:04.680]   Good morning. This Tuesday is election day. After months of spirited debate and
+[00:00:04.680 --> 00:00:08.120]   vigorous campaigning, the time has come for Americans to make important
+[00:00:08.120 --> 00:00:11.760]   decisions about our nation's future. I encourage all Americans to go to the
+[00:00:11.760 --> 00:00:16.460]   polls and vote. Election season brings out the spirit of competition between
+[00:00:16.460 --> 00:00:20.400]   our political parties, and that competition is an essential part of a
+[00:00:20.400 --> 00:00:24.160]   healthy democracy. But as the campaigns come to a close, Republicans,
+[00:00:24.160 --> 00:00:29.280]   Democrats and independents can find common ground on at least one point. Our
+[00:00:29.280 --> 00:00:34.520]   system of representative democracy is one of America's greatest strengths. The
+[00:00:34.520 --> 00:00:38.520]   United States was founded on the belief that all men are created equal. Every
+[00:00:38.520 --> 00:00:42.640]   election day, millions of Americans of all races, religions and backgrounds
+[00:00:42.640 --> 00:00:46.400]   step into voting booths throughout the nation. Whether they are rich or poor,
+[00:00:46.400 --> 00:00:50.920]   old or young, each of them has an equal share in choosing the path that our
+[00:00:50.920 --> 00:00:55.600]   country will take, and every ballot they cast is a reminder that our founding
+[00:00:55.600 --> 00:00:59.840]   principles are alive and well. Voting is one of the great privileges of
+[00:00:59.840 --> 00:01:05.040]   American citizenship, and it has always required brave defenders. As you head to
+[00:01:05.040 --> 00:01:08.520]   the polls next week, remember the sacrifices that had been made by
+[00:01:08.520 --> 00:01:13.440]   generations of Americans in uniform to preserve our way of life. From Bunker
+[00:01:13.440 --> 00:01:17.480]   Hill to Baghdad, the men and women of American Armed Forces have been devoted
+[00:01:17.480 --> 00:01:22.560]   guardians of our democracy. All of us owe them and their families a special debt
+[00:01:22.560 --> 00:01:26.960]   of gratitude on Election Day. Americans should also remember the important
+[00:01:26.960 --> 00:01:30.920]   example that our elections set throughout the world. Young democracies
+[00:01:30.920 --> 00:01:34.520]   from Georgia and Ukraine to Afghanistan and Iraq can look to the United States
+[00:01:34.520 --> 00:01:38.680]   for proof that self-government can endure, and nations that still live
+[00:01:38.680 --> 00:01:42.720]   under tyranny and oppression can find hope and inspiration in our commitment
+[00:01:42.720 --> 00:01:47.080]   to liberty. For more than two centuries, Americans have demonstrated the ability
+[00:01:47.080 --> 00:01:50.800]   of free people to choose their own leaders. Our nation has flourished
+[00:01:50.800 --> 00:01:54.920]   because of its commitment to trusting the wisdom of our citizenry. In this
+[00:01:54.920 --> 00:01:59.040]   year's election, we will see this tradition continue, and we will be
+[00:01:59.040 --> 00:02:03.220]   reminded once again that we are blessed to live in a free nation guided by the
+[00:02:03.220 --> 00:02:06.360]   will of the people. Thank you for listening.
+
+whisper_print_timings:     load time =   302.43 ms
+whisper_print_timings:     fallbacks =   0 p /   0 h
+whisper_print_timings:      mel time =   124.86 ms
+whisper_print_timings:   sample time =  1228.06 ms /  2492 runs (    0.49 ms per run)
+whisper_print_timings:   encode time = 99687.55 ms /     5 runs (19937.51 ms per run)
+whisper_print_timings:   decode time =     0.00 ms /     1 runs (    0.00 ms per run)
+whisper_print_timings:   batchd time = 43607.72 ms /  2470 runs (   17.65 ms per run)
+whisper_print_timings:   prompt time = 11940.77 ms /   796 runs (   15.00 ms per run)
+whisper_print_timings:    total time = 156909.30 ms
+
+
+Good morning. This Tuesday is election day. After months of spirited debate and vigorous campaigning, the time has come for Americans to make important decisions about our nation's future. I encourage all Americans to go to the polls and vote. Election season brings out the spirit of competition between our political parties, and that competition is an essential part of a healthy democracy. But as the campaigns come to a close, Republicans, Democrats and independents can find common ground on at least one point. Our system of representative democracy is one of America's greatest strengths. The United States was founded on the belief that all men are created equal. Every election day, millions of Americans of all races, religions and backgrounds step into voting booths throughout the nation. Whether they are rich or poor, old or young, each of them has an equal share in choosing the path that our country will take, and every ballot they cast is a reminder that our founding principles are alive and well. Voting is one of the great privileges of American citizenship, and it has always required brave defenders. As you head to the polls next week, remember the sacrifices that had been made by generations of Americans in uniform to preserve our way of life. From Bunker Hill to Baghdad, the men and women of American Armed Forces have been devoted guardians of our democracy. All of us owe them and their families a special debt of gratitude on Election Day. Americans should also remember the important example that our elections set throughout the world. Young democracies from Georgia and Ukraine to Afghanistan and Iraq can look to the United States for proof that self-government can endure, and nations that still live under tyranny and oppression can find hope and inspiration in our commitment to liberty. For more than two centuries, Americans have demonstrated the ability of free people to choose their own leaders. Our nation has flourished because of its commitment to trusting the wisdom of our citizenry. In this year's election, we will see this tradition continue, and we will be reminded once again that we are blessed to live in a free nation guided by the will of the people. Thank you for listening.

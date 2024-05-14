@@ -14,7 +14,7 @@ fi
 #TODO: Make this a command line parameter
 #models="base small large"
 #models="tiny.en tiny base.en base small.en small medium.en medium large-v1 large"
-models="tiny.en base.en small.en medium.en large"
+models="tiny.en tiny base.en base medium medium.en medium-q"
 
 DURATION=$(ffprobe -i $1 -show_entries format=duration -v quiet -of csv="p=0")
 DURATION=$(printf "%.2f" $DURATION)
@@ -23,6 +23,7 @@ echo "Input file duration: ${DURATION}s"
 for model in $models; do
     echo "Running $model"
     COMMAND="./main -m models/ggml-$model.bin -owts -f $1 -of $1.$model"
+    echo $COMMAND
 
     if [ ! -z "$2" ]; then
         COMMAND="$COMMAND -fp $2"
@@ -41,30 +42,33 @@ for model in $models; do
 
     echo "Execution time: ${EXECTIME}s (${RATIO}x realtime)"
 
+    sed -nrE 's/.*?\-vf "(.+)".*?/\1/p' "$1.$model.wts" > "$1.filter.$model.txt"
+    sed -E 's#(\-vf ".+")#\-filter_complex_script '"$1.filter.$model.txt"'#g' -i "$1.$model.wts"
+
     # If the file already exists, delete it
-    if [ -f $1.mp4 ]; then
-        rm $1.mp4
+    if [ -f "$1".mp4 ]; then
+        rm "$1".mp4
     fi
 
-    bash $1.$model.wts >/dev/null 2>&1
-    mv $1.mp4 $1.$model.mp4
+    bash "$1.$model.wts" >/dev/null 2>&1
+    mv "$1.mp4" "$1.$model.mp4"
 
-    ffmpeg -y -f lavfi -i color=c=black:s=1200x50:d=$DURATION -vf "drawtext=fontfile=$2:fontsize=36:x=10:y=(h-text_h)/2:text='ggml-$model - ${EXECTIME}s (${RATIO}x realtime)':fontcolor=lightgrey" $1.$model.info.mp4 >/dev/null 2>&1
+    ffmpeg -y -f lavfi -i color=c=black:s=1200x50:d="$DURATION" -vf "drawtext=fontfile=$2:fontsize=36:x=10:y=(h-text_h)/2:text='ggml-$model - ${EXECTIME}s (${RATIO}x realtime)':fontcolor=lightgrey" "$1.$model.info.mp4" >/dev/null 2>&1
 done
 
-COMMAND="ffmpeg -y"
+COMMAND="ffmpeg -y -i $1"
 for model in $models; do
     COMMAND="$COMMAND -i $1.$model.info.mp4 -i $1.$model.mp4"
 done
 COMMAND="$COMMAND -filter_complex \""
-COUNT=0
+COUNT=1
 for model in $models; do
-    COMMAND="$COMMAND[${COUNT}:v][$(($COUNT+1)):v]"
+  COMMAND="$COMMAND[${COUNT}:v][$((COUNT+1)):v]"
     COUNT=$((COUNT+2))
 done
-COMMAND="$COMMAND vstack=inputs=${COUNT}[v]\" -map \"[v]\" -map 1:a $1.all.mp4 >/dev/null 2>&1"
+COMMAND="$COMMAND vstack=inputs=$((COUNT-1))[v]\" -map \"[v]\" -map 0:a $1.all.mp4"
 
-echo $COMMAND
+echo "$COMMAND"
 
 # Run the command
-eval $COMMAND
+eval "$COMMAND"

@@ -1,6 +1,7 @@
 *.o
 *.a
 .cache/
+.ccls-cache/
 .coreml/
 .test/
 .vs/
@@ -8,6 +9,9 @@
 .DS_Store
 .vimspector.json
 /CMakeSettings.json
+
+*.ttf
+*.bin
 
 build/
 build-coreml/

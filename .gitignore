@@ -12,6 +12,7 @@
 
 *.ttf
 *.bin
+venv/*
 
 build/
 build-coreml/

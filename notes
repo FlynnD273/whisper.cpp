@@ -1,0 +1,5 @@
+Alright so tiny.en seems fine for English isolated audio. Medium or even base seems fine if you want a multilingual model. 
+
+There's automatic language detection built in. 
+
+For audio with background music, it seems that the large quantised model or the non-quantised medium are the only ones that works okay, from my small-scale tests. 
